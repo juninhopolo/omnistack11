@@ -3,6 +3,8 @@ const cors = require('cors');
 
 const routes = require('./routes'); //Importa a variável exportada por routes.js
 
+const {errors} = require('celebrate');
+
 const app = express();
 
 app.use(cors());
@@ -12,7 +14,13 @@ app.use(express.json());
 
 //Diz para a aplicação usar as rotas.
 app.use(routes);
-app.listen(3333);
+
+//Usa os status codes corretos para erros causados por validação;
+app.use(errors());
+
+module.exports = app;
+
+//app.listen(3333);
 
 /*Em /backend existe uma dependencia chamada "nodemon"
 que reinicia o servidor node toda vez que mudanças são

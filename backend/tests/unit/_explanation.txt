@@ -1,0 +1,3 @@
+Teste unitários testa algo muito isolado da aplicação.
+Ele não se comunica com banco de dados e não chama apis ou outros scripts de teste.
+

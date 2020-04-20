@@ -1,5 +1,5 @@
 const connection = require('../database/connection');
-const crypto = require('crypto');
+const generateUniqueId = require('../Utils/generateUniqueId');
 
 module.exports = {
     async index (request, response) {
@@ -16,7 +16,7 @@ module.exports = {
         //Para request body, ou seja, criação de recursos.
         const {name, email, whatsapp, city, uf} = request.body;
     
-        const id = crypto.randomBytes(4).toString('HEX');
+        const id = generateUniqueId();
     
         //Pode demorar....
         await connection('ongs').insert({
